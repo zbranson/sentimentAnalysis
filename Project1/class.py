@@ -36,6 +36,9 @@ def get_score(tweet):
     #for negative tweets but slows things down quite a bit O(n) vs O(1) lookup
     #tweet = set(tweet)
     for word in tweet:
+	#lemmatizing results in a slight increase in accuracy of a few
+	# thousandths of a percent but it also takes a lot longer
+        word = wordnet_lemmatizer.lemmatize(word)
         if word in set(pos_words):
             score +=1
         if word in set(neg_words):
