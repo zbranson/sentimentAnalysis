@@ -2,6 +2,7 @@
 
 import string, os, operator, re
 from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
 
 
 #for lemmatizing tweets
@@ -15,6 +16,9 @@ with open('./pos.wn','r',encoding='utf-8', errors='ignore') as pos:
         line = line.replace('\n', '')
         line = re.split('[^a-z]',line)
         for word in line:
+            #had to remove stopwords because I split multi-word expressions
+            #if word not in stopwords.words('english'):
+            #removing stopwords negatively effected performance for some reason
             pos_words.append(word) 
 
 # gets 2D list of negative words from file, removes underscores, hypens, and   newlines
@@ -25,6 +29,9 @@ with open('./neg.wn','r',encoding='utf-8', errors='ignore') as neg:
         line = line.replace('\n', '')
         line = re.split('[^a-z]',line)
         for word in line:
+            #had to remove stopwords because I split multi-word expressions
+            #if word not in stopwords.words('english'):
+            #removing stopwords negatively effected performance for some reason
             neg_words.append(word) 
 
 #takes in tweet as string and returns integer score
