@@ -54,7 +54,7 @@ def review_compiler():
     global clean_reviews
     clean_reviews = []
     for i in range(2, num_reviews_all):
-        if ((i+1)%100 == 0):
+        if ((i+1)%1000 == 0):
             print("Review %d of %d\n" % (i+1, num_reviews_all))
         clean_reviews.append(preprocessor(i))
     return clean_reviews
@@ -70,11 +70,11 @@ def vector():
 
 #num_reviews_test = 500
 
-num_reviews_all = 1000
+num_reviews_all = 2000000
 compiled_reviews = []
 
 review_compiler()
-print(clean_reviews)
+#print(clean_reviews)
 vector()
 
 
